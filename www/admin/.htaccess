@@ -1,0 +1,8 @@
+AuthName "Restricted area"
+
+AuthType Basic
+
+AuthUserFile /home/bus/www/admin/.htpasswd
+
+Require valid-user
+

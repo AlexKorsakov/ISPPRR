@@ -1,0 +1,516 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    /*width: 100%;
+    font-size: 12px;*/
+    font-family: Tahoma, serif;
+}
+
+p, td {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0px;
+}
+
+a img {
+    border: 0;
+}
+
+a {
+    color: #D2782C;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #CB935A;
+    text-decoration: underline;
+}
+
+a.hidden {
+    text-decoration: none;
+    color: #000000;
+    cursor: default;
+}
+
+ul {
+    margin-top: 0px;
+    padding: 1px;
+    list-style-type: square;
+    line-height: 16px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    color: #687d91;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #BB6920;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+input{
+    margin: 10px;
+    cursor: pointer;
+    padding: 6px 6px;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    outline: none;
+    position: relative;
+    box-shadow: 0 0 10px #eee inset;
+    -moz-box-shadow: 0 0 10px #eee inset;
+    -webkit-box-shadow: 0 0 10px #eee inset;
+    -ms-box-shadow: 0 0 10px #eee inset;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+}
+input:focus{
+    -webkit-box-shadow: 0px 0px 5px #bfdeff;
+    -moz-box-shadow: 0px 0px 5px #bfdeff;
+    box-shadow: 0px 0px 5px #bfdeff;
+}
+label {
+    margin: 10px;
+}
+select {
+    /*height: 29px;*/
+    margin: 10px;
+    cursor: pointer;
+    padding: 6px 6px;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    outline: none;
+    position: relative;
+    box-shadow: 0 0 10px #eee inset;
+}
+
+.header {
+    text-align: center;
+    padding-top: 30px;
+}
+.left select{
+    width: 100%;
+}
+
+/*Стили всплывающего окна*/
+.modal {
+    border-radius: 5px;
+    border: 3px rgba(0, 0, 0, 0.11) solid;
+    background-color:white;
+    max-width: 600px;
+    /*height: 487px;*/
+    position:absolute;
+    top: 45%;                    /* отступаем сверху 45%, остальные 5% подвинет скрипт */
+    left: 50%;                   /* половина экрана слева */
+    margin-left: -300px;         /*  центровка css, отступаем влево и вверх минус половину ширины и высоты  */
+    -webkit-transition: top 0.5s;
+    -moz-transition: top 0.5s;
+    -o-transition: top 0.5s;
+    transition: top 0.5s;
+    padding: 20px 10px;
+    z-index: 3;
+}
+.modal.active {
+    top:20%;
+}
+
+/* Кнопка опций */
+.options{
+    width: 50px;
+    height: 95px;
+    position: fixed; /* чтобы окно было в видимой зоне в любом месте */
+    top: 0;
+    right: 300px;
+    opacity: 0.9; /* полностью прозрачно для анимирования */
+    cursor: pointer;
+    /*
+        display: none;  в обычном состоянии окна не должно быть
+    z-index: 3;
+    background-image: url(/images/ribbon.png);
+*/
+}
+
+.menu {
+    border-radius: 5px;
+    border: 3px rgba(255, 255, 255, 0.11) solid;
+    background-color: #f0f0f0;
+    bottom: 0%;                    /* отступаем сверху 45%, остальные 5% подвинет скрипт
+    left: 50%;                   /* половина экрана слева
+    position:fixed;
+    width: 956px;
+    margin-left: -478px;
+    margin-bottom: -60px;         /*  центровка css, отступаем влево и вверх минус половину высоты  */
+    z-index: 3;
+    display: table;
+    max-height: 60px;
+}
+.menu.active {
+    margin-bottom: 0px;
+}
+.menu ul{
+    list-style: none;
+    display: inline;
+}
+.menu ul li{
+    float:left;
+    margin: 1px;
+    background: aliceblue;
+}
+.menu ul li a{
+    float: left;
+    display: block;
+    color: #BB6920;;
+    text-decoration: none;
+    font-family: Tahoma;
+    font-size: 20px;
+    margin: 0;
+    padding: 5px;
+    height: 52px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.menu label{
+    color: #666;
+    text-align: left;
+    font: 16px/24px Helvetica Neue, "Arial", Helvetica, Verdana, sans-serif;
+    margin: 10px;
+}
+.item{
+    display: none;
+    /*
+    width: 32%;
+    display: inline;
+    */
+}
+
+.menu input[type=text] input[type=password] input[type=submit]{
+    width: 103px;
+    font: 16px/24px Helvetica Neue, "Arial", Helvetica, Verdana, sans-serif;
+    padding: 6px 0;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    outline: none;
+    display: inline-block;
+    position: relative;
+}
+
+/*****  Форма авторизации  *****/
+
+.form-container {
+    border: 0px solid #f2e3d2;
+    background: #c9b7a2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2e3d2), to(#c9b7a2));
+    background: -webkit-linear-gradient(top, #f2e3d2, #c9b7a2);
+    background: -moz-linear-gradient(top, #f2e3d2, #c9b7a2);
+    background: -ms-linear-gradient(top, #f2e3d2, #c9b7a2);
+    background: -o-linear-gradient(top, #f2e3d2, #c9b7a2);
+    background-image: -ms-linear-gradient(top, #f2e3d2 0%, #c9b7a2 100%);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+    font-family: 'Helvetica Neue',Helvetica,sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+    min-width:300px;
+    padding:20px;
+    width:300px;
+    position: fixed;
+    left: -170px;
+    margin-left: 50%;
+    margin-top: 10%;
+}
+.form-field {
+    border: 1px solid #c9b7a2;
+    background: #e4d5c3;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    color: #c9b7a2;
+    -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+    -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+    box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+    padding:8px;
+    margin-bottom:20px;
+    width:230px;
+}
+.form-field:focus {
+    background: #fff;
+    color: #725129;
+}
+.form-container h2 {
+    text-shadow: #fdf2e4 0 1px 0;
+    font-size:18px;
+    margin: 0 0 10px 0;
+    font-weight:bold;
+    text-align:center;
+}
+.form-title {
+    color: #d2772c;
+    text-shadow: #fdf2e4 0 1px 0;
+}
+.submit-container {
+    margin:8px 0;
+    text-align:right;
+}
+.submit-button {
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    background: #FBFBFB;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FBFBFB), to(#EEEEEE));
+    background: -webkit-linear-gradient(top, #FBFBFB, #EEEEEE);
+    background: -moz-linear-gradient(top, #FBFBFB, #EEEEEE);
+    background: -ms-linear-gradient(top, #FBFBFB, #EEEEEE);
+    background: -o-linear-gradient(top, #FBFBFB, #EEEEEE);
+    background-image: -ms-linear-gradient(top, #FBFBFB 0%, #EEEEEE 100%);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+    -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+    box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+    text-shadow: 1px 1px 0px #fff;
+    color: #666;
+    padding: 8.5px 18px;
+    font: 16px/24px Helvetica Neue, "Arial", Helvetica, Verdana, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.submit-button:active {
+    text-shadow: 1px 1px 0px #e1e1e1;
+    border: 1px solid #b1b1b1;
+    background: #dddddd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#c3c3c3));
+    background: -webkit-linear-gradient(top, #e1e1e1, #c3c3c3);
+    background: -moz-linear-gradient(top, #e1e1e1, #c3c3c3);
+    background: -ms-linear-gradient(top, #e1e1e1, #c3c3c3);
+    background: -o-linear-gradient(top, #e1e1e1, #c3c3c3);
+    background-image: -ms-linear-gradient(top, #e1e1e1 0%, #c3c3c3 100%);
+    color: #fff;
+}
+
+/*
+.form-title {
+    padding: 12px;
+}
+
+.form-title h2{
+    margin-bottom:0;
+}
+*/
+
+/** Колонки разных размеров */
+.f_20 {
+    width: 16%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_25 {
+    width: 21%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_33 {
+    width: 29%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_50 {
+    width: 46%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_75 {
+    width: 71%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_80 {
+    width: 76%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.f_100 {
+    width: 96%;
+    display: inline;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/* Подложка */
+.overlay {
+    z-index: 2; /* подложка должна быть выше слоев элементов сайта, но ниже слоя модального окна */
+    position: fixed; /* всегда перекрывает весь сайт */
+    background-color: #000; /* черная */
+    opacity: 0.8; /* но немного прозрачна */
+    width: 100%;
+    height: 100%; /* размером во весь экран */
+    top: 0;
+    left: 0; /* сверху и слева 0, обязательные свойства! */
+    cursor: pointer;
+    display: none; /* в обычном состоянии её нет */
+}
+
+.doc_viewer {
+    width: 100%;
+}
+
+
+.filetable {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    background: white;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.filetable th {
+    font-weight: normal;
+    color: #039;
+    border-bottom: 2px solid #6678b1;
+    padding: 10px 8px;
+}
+.filetable td {
+    color: #669;
+    padding: 9px 8px;
+    transition: .3s linear;
+}
+.filetable tr:hover td {
+    background:#F0F8FF;
+}
+
+.filetable caption {
+    caption-side: bottom;
+    text-align: right;
+    padding: 10px 0;
+    font-size: 14px;
+}
+.filetable .current_row {
+    background: #c8cfd6;
+}
+
+
+#gallery1 {
+    /*position: relative;
+    padding-top: 50%;*/
+    -moz-user-select: none; user-select: none;
+}
+
+#gallery1 img {
+    /*position: absolute;
+    top: 25%;
+    left: 12.5%;*/
+    max-width: 50%;
+    max-height: 49.5%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -moz-user-select: none; user-select: none;
+    cursor: zoom-in;
+    -webkit-transform:scale(0.8); /*Webkit: уменьшаем размер до 0.8*/
+    -moz-transform:scale(0.8); /*Mozilla: масштабирование*/
+    -o-transform:scale(0.8); /*Opera: масштабирование*/
+    -webkit-transition-duration: 0.5s; /*Webkit: длительность анимации*/
+    -moz-transition-duration: 0.5s; /*Mozilla: длительность анимации*/
+    -o-transition-duration: 0.5s; /*Opera: длительность анимации*/
+    opacity: 0.7; /*Начальная прозрачность изображений*/
+    margin: 0 10px 5px 0; /*Интервалы между изображениями*/
+}
+#gallery1 img:hover {
+    -webkit-transform:scale(1.1); /*Webkit: увеличиваем размер до 1.2x*/
+    -moz-transform:scale(1.1); /*Mozilla: масштабирование*/
+    -o-transform:scale(1.1); /*Opera: масштабирование*/
+    box-shadow:0px 0px 30px gray; /*CSS3 тени: 30px размытая тень вокруг всего изображения*/
+    -webkit-box-shadow:0px 0px 30px gray; /*Webkit: тени*/
+    -moz-box-shadow:0px 0px 30px gray; /*Mozilla: тени*/
+    opacity: 1;
+}
+#gallery1 img:nth-child(4n-2) {left: 37.5%;}
+#gallery1 img:nth-child(4n-1) {left: 62.5%;}
+#gallery1 img:nth-child(4n) {left: 87.5%;}
+#gallery1 img:nth-child(n+5) {top: 75%;}
+
+.show {
+    /*width: 100%!important;*/
+    max-width: 100%!important;
+    position: fixed;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    z-index: 50;
+}
+
+#gallery1 img.show:hover {
+}
+/*
+#gallery1 img:focus ~ div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    background: rgba(240,240,240,.9);
+    cursor: zoom-out;
+}
+*/
+
+/****** Messages *****/
+.info, .success, .warning, .error, .validation {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('info.png');
+}
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('success.png');
+}
+.warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('warning.png');
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('error.png');
+}
+
